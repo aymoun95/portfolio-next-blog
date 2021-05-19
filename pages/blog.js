@@ -1,20 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
-import {
-  Box,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Stack,
-} from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import NavBarLayout from "../layouts/NavBarLayout";
-import Heading from "../components/theme/Heading";
+import Heading from "../components/custom/Heading";
 import { getAllFilesFrontMatter } from "../lib/mdx";
 import BlogPost from "../components/BlogPost";
 
-import { SearchIcon } from "@chakra-ui/icons";
 import ContentLayout from "../layouts/contentLayout";
-import Text from "../components/theme/Text";
 
 export default function Blog({ posts }) {
   const [searchValue, setSearchValue] = useState("");

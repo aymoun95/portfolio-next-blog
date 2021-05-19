@@ -1,8 +1,8 @@
 import NextLink from "next/link";
 import { Flex, Box, Link } from "@chakra-ui/react";
 import { parseISO, format } from "date-fns";
-import Text from "./theme/Text";
-import Heading from "./theme/Heading";
+import Text from "./custom/Text";
+import Heading from "./custom/Heading";
 
 const BlogPost = ({ title, publishedAt, summary, slug }) => {
   return (
