@@ -1,14 +1,10 @@
 import NextLink from "next/link";
-import { useColorMode, Heading, Text, Flex, Box, Link } from "@chakra-ui/react";
+import { Flex, Box, Link } from "@chakra-ui/react";
 import { parseISO, format } from "date-fns";
+import Text from "./theme/Text";
+import Heading from "./theme/Heading";
 
 const BlogPost = ({ title, publishedAt, summary, slug }) => {
-  const { colorMode } = useColorMode();
-  const secondaryTextColor = {
-    light: "gray.700",
-    dark: "gray.400",
-  };
-
   return (
     <NextLink href={`blog/${slug}`} passHref>
       <Link w="100%" _hover={{ textDecoration: "none" }}>
@@ -30,16 +26,11 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
               </Heading>
             </Flex>
 
-            <Text
-              color="gray.500"
-              minWidth="140px"
-              textAlign={["left", "right"]}
-              mb={[4, 0]}
-            >
+            <Text minWidth="140px" textAlign={["left", "right"]} mb={[4, 0]}>
               {format(parseISO(publishedAt), "MMMM dd, yyyy")}
             </Text>
           </Flex>
-          <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
+          <Text>{summary}</Text>
         </Box>
       </Link>
     </NextLink>
