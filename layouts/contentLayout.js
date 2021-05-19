@@ -7,8 +7,8 @@ import {
   Stack,
   useColorMode,
 } from "@chakra-ui/react";
-import Text from "../components/theme/Text";
-import Heading from "../components/theme/Heading";
+import Text from "../components/custom/Text";
+import Heading from "../components/custom/Heading";
 
 export default function ContentLayout({
   title,
@@ -30,8 +30,8 @@ export default function ContentLayout({
       align={{ base: "center", md: "flex-start" }}
       justify={{ base: "center", md: "space-around", xl: "space-between" }}
       direction={{
-        base: children ? "column" : "column-reverse",
-        md: children ? "column" : "row",
+        base: "column-reverse",
+        md: "row",
       }}
       wrap="no-wrap"
       minH="70vh"
@@ -50,7 +50,6 @@ export default function ContentLayout({
               as="h1"
               size="xl"
               fontWeight="bold"
-              color={textColor[colorMode]}
               textAlign={["center", "center", "left", "left"]}
             >
               {title}
@@ -58,7 +57,6 @@ export default function ContentLayout({
             <Heading
               as="h2"
               size="md"
-              color={textColor[colorMode]}
               opacity="0.8"
               fontWeight="normal"
               lineHeight={1.5}

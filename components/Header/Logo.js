@@ -8,10 +8,13 @@ export default function Logo(props) {
     <Box {...props}>
       <Text
         color={{ base: "white", md: logoColor }}
-        fontSize="2xl"
+        fontSize="4xl"
         fontWeight="bold"
       >
-        Portfolio
+        Portfo
+        <Text as="span" color="red.500">
+          lio.
+        </Text>
       </Text>
     </Box>
   );

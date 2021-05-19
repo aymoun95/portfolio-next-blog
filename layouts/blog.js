@@ -3,8 +3,8 @@ import { parseISO, format } from "date-fns";
 import { useColorMode, Flex, Stack, Avatar } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import NavBarLayout from "./NavBarLayout";
-import Text from "../components/theme/Text";
-import Heading from "../components/theme/Heading";
+import Text from "../components/custom/Text";
+import Heading from "../components/custom/Heading";
 
 export default function BlogLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode();

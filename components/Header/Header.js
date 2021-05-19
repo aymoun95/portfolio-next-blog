@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import IconButton from "../theme/IconButton";
+import IconButton from "../custom/IconButton";
 import DarkModeSwitch from "../DarkModeSwitch";
 import styled from "@emotion/styled";
 
@@ -31,7 +31,7 @@ const Header = (props) => {
       {...props}
     >
       <Flex align="center">
-        <Logo w="100px" color={["white", "white", "gray.500", "gray.500"]} />
+        <Logo w="200px" color={["white", "white", "gray.500", "gray.500"]} />
       </Flex>
 
       <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
