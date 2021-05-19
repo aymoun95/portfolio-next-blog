@@ -12,7 +12,7 @@ export default function Index() {
     <>
       <Container>
         <Head>
-          <title>Home - BenjaminAYmen</title>
+          <title>Home - Aymen Ben Zlaouia</title>
         </Head>
         <Stack
           as="main"
@@ -29,7 +29,7 @@ export default function Index() {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Heading mb={2}>Hi, I'm AYmen Cason</Heading>
+            <Heading mb={2}>Hi, I'm Aymen Ben Zlaouia</Heading>
             <Text color={colorSecondary[colorMode]}>
               In exercitation reprehenderit voluptate ea voluptate. Aliquip
               Lorem cillum in Lorem magna eiusmod amet nostrud cillum nostrud.

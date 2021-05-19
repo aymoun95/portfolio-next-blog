@@ -1,18 +1,17 @@
-import {
-  useColorMode,
-  Button,
-  Flex,
-  Box,
-  useFormControlContext,
-} from "@chakra-ui/react";
+import React from "react";
+import { useColorMode, Button, Flex, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import styled from "@emotion/styled";
+
 import DarkModeSwitch from "../components/DarkModeSwitch";
 
-export default function Container({ children }) {
+const Container = ({ children }) => {
   const { colorMode } = useColorMode();
 
-  const bgColor = { light: "white", dark: "#171717" };
+  const bgColor = {
+    light: "white",
+    dark: "#171717",
+  };
 
   const color = {
     light: "black",
@@ -31,6 +30,7 @@ export default function Container({ children }) {
     backdrop-filter: saturate(180%) blur(20px);
     transition: height 0.5s, line-height 0.5s;
   `;
+
   return (
     <>
       <StickyNav
@@ -54,21 +54,17 @@ export default function Container({ children }) {
               as="a"
               variant="ghost"
               p={[1, 2, 4]}
-              _hover={{
-                backgroundColor: navHoverBg[colorMode],
-              }}
+              _hover={{ backgroundColor: navHoverBg[colorMode] }}
             >
               Home
             </Button>
           </NextLink>
-          <NextLink href="/" passHref>
+          <NextLink href="/blog" passHref>
             <Button
               as="a"
               variant="ghost"
               p={[1, 2, 4]}
-              _hover={{
-                backgroundColor: navHoverBg[colorMode],
-              }}
+              _hover={{ backgroundColor: navHoverBg[colorMode] }}
             >
               Blog
             </Button>
@@ -89,4 +85,6 @@ export default function Container({ children }) {
       </Flex>
     </>
   );
-}
+};
+
+export default Container;
