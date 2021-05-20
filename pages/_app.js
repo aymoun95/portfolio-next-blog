@@ -32,7 +32,9 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === "light" ? "white" : "#171717"};
+            background: ${colorMode === "light"
+              ? "rgba(255,255,255,0.87)"
+              : "#171717"};
             // transition: background 0.5s;
           }
         `}

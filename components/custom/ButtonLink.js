@@ -26,6 +26,7 @@ export default function ButtonLink({
         {...rest}
         _hover={{
           background: "transparent",
+          ...rest._hover,
         }}
       >
         {children}

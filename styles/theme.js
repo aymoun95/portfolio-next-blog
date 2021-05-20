@@ -1,6 +1,8 @@
+import { CloseIcon } from "@chakra-ui/icons";
 import { theme as chakraTheme } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
+import pages from "./pages";
 
 const fonts = {
   ...chakraTheme.fonts,
@@ -34,6 +36,10 @@ const overrides = {
     "4xl": "36px",
     "5xl": "48px",
     "6xl": "64px",
+  },
+  components: {
+    ...chakraTheme.components,
+    ...pages,
   },
 };
 
