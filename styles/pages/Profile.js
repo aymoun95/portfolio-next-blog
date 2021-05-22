@@ -12,7 +12,7 @@ export const Profile = {
             left: "70%",
           },
           ".me-img": {
-            bottom: "5%",
+            bottom: "30%",
           },
         },
       },
@@ -23,10 +23,10 @@ export const Profile = {
         transition: "bottom 1s, left 1s",
       },
       img: {
-        height: "100%",
+        height: "60%",
         position: "absolute",
-        left: "65%",
-        bottom: "0",
+        left: "62%",
+        bottom: "20%",
         transform: "translateX(-50%)",
         transition: "bottom 1s, left 1s",
       },
