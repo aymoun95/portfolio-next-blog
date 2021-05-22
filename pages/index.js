@@ -70,7 +70,7 @@ export default function Index() {
               isExternal
               background="none"
               color="red.500"
-              ml={{ base: 0, md: 6 }}
+              ml={{ base: 0, md: 3 }}
             >
               See My Resume <ExternalLinkIcon mx="2px" />
             </ButtonLink>
@@ -101,13 +101,13 @@ export default function Index() {
           <Box sx={styles.imgContainer}>
             <Image
               src="/images/pattern.png"
-              alt="pattern"
+              // alt="pattern"
               className="back-img"
               sx={styles.back}
             />
             <Image
-              src="/images/me.png"
-              alt="me"
+              src="/images/developer1.png"
+              // alt="me"
               sx={styles.img}
               className="me-img"
             />
