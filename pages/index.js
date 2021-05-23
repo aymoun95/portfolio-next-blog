@@ -17,10 +17,8 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import ButtonLink from "../components/custom/ButtonLink";
 import { FaMedium, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import SocialMediaBtn from "../components/custom/SocialMediaBtn";
-
+import MaskedMe from "../components/svg/MaskedMe";
 export default function Index() {
-  const styles = useMultiStyleConfig("Profile", {});
-
   const textHoverColor = useColorModeValue("gray.700", "white");
 
   const steps = ["Developer 👋", 1000, "Full Stack Developer 👌", 2000];
@@ -58,7 +56,7 @@ export default function Index() {
             mb={6}
           >
             <ButtonLink
-              href="#"
+              href="/contact"
               _hover={{
                 color: textHoverColor,
               }}
@@ -94,24 +92,13 @@ export default function Index() {
           </Box>
         </Stack>
         <Flex
-          w={{ base: "80%", md: "50%" }}
+          w={{ base: "80%", md: "40%" }}
           mb={{ base: 12, md: 0 }}
-          justify="center"
+          position="relative"
+          right={{ base: 5, md: -5 }}
+          top={{ base: 0, md: "-3rem" }}
         >
-          <Box sx={styles.imgContainer}>
-            <Image
-              src="/images/pattern.png"
-              // alt="pattern"
-              className="back-img"
-              sx={styles.back}
-            />
-            <Image
-              src="/images/developer1.png"
-              // alt="me"
-              sx={styles.img}
-              className="me-img"
-            />
-          </Box>
+          <MaskedMe />
         </Flex>
       </ContentLayout>
     </NavBarLayout>

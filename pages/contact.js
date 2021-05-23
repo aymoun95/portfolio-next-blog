@@ -13,12 +13,18 @@ import {
   InputRightElement,
   Icon,
   Stack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Button from "../components/custom/Button";
 import ErrorMessage from "../components/custom/ErrorMessage";
 import { InputField } from "../components/custom/InputField";
+import Head from "next/head";
 
 export default function Contact() {
+  const shadow = useColorModeValue(
+    "0px 5px 5px 0px rgba(0, 0, 0, 0.2)",
+    "0px 0px 2px 2px rgba(0, 0, 0, 0.2)"
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -46,12 +52,15 @@ export default function Contact() {
 
   return (
     <NavBarLayout>
+      <Head>
+        <title>Contact - Aymen Ben Zlaouia</title>
+      </Head>
       <Flex align="center" justify="center" w="100%">
         <Flex
           width="70%"
-          borderWidth={1}
+          borderWidth={0}
           borderRadius={8}
-          boxShadow="lg"
+          shadow={shadow}
           direction={{ base: "column", md: "row" }}
         >
           <Stack
@@ -124,8 +133,8 @@ export default function Contact() {
             />
             <Button
               borderRadius={0}
+              borderBottomLeftRadius={{ base: 8, md: 0 }}
               borderBottomRightRadius={8}
-              borderBottomRadius={{ base: 8, md: 0 }}
               colorScheme="red"
               bg="red.500"
               variant="solid"

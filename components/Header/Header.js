@@ -54,7 +54,7 @@ const Header = (props) => {
         >
           <MenuItem to="/">Home</MenuItem>
           <MenuItem to="/blog">Blog</MenuItem>
-          <MenuItem to="/projects">Projects</MenuItem>
+          <MenuItem to="/work">Work</MenuItem>
           <MenuItem to="/contact">Contact</MenuItem>
           <DarkModeSwitch />
         </Flex>
