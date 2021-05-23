@@ -16,9 +16,15 @@ const breakpoints = createBreakpoints({
   lg: "62em",
 });
 
+const colors = {
+  ...chakraTheme.colors,
+  darkWhiteHighEmphasize: "rgba(255,255,255,0.87)",
+};
+
 const overrides = {
   ...chakraTheme,
   fonts,
+  colors,
   breakpoints,
   fontWeights: {
     normal: 300,

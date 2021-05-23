@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import { Stack } from "@chakra-ui/react";
+import { Stack, useColorModeValue } from "@chakra-ui/react";
 import NavBarLayout from "../layouts/NavBarLayout";
 import Heading from "../components/custom/Heading";
 import { getAllFilesFrontMatter } from "../lib/mdx";
@@ -9,6 +9,7 @@ import BlogPost from "../components/BlogPost";
 import ContentLayout from "../layouts/contentLayout";
 
 export default function Blog({ posts }) {
+  const headingColor = useColorModeValue("gray.700", "darkWhiteHighEmphasize");
   const [searchValue, setSearchValue] = useState("");
 
   // const filteredBlogPosts = posts
@@ -36,7 +37,13 @@ export default function Blog({ posts }) {
           w={{ base: "100%", md: "100%" }}
           align={["center", "center", "flex-start", "flex-start"]}
         >
-          <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
+          <Heading
+            letterSpacing="tight"
+            mb={4}
+            as="h1"
+            size="2xl"
+            color={headingColor}
+          >
             Blog ({posts.length} posts)
           </Heading>
           {/* <InputGroup mb={4} mr={4} w="100%">
