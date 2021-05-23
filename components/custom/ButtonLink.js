@@ -15,7 +15,11 @@ export default function ButtonLink({
     ATagOrNextLink = ChakraLink;
   }
   return (
-    <ATagOrNextLink href={href} isExternal={isExternal}>
+    <ATagOrNextLink
+      href={href}
+      isExternal={isExternal}
+      // w={{ base: "100%", sm: "100%" }}
+    >
       <Button
         display="inline-block"
         fontSize="md"

@@ -46,7 +46,13 @@ export default function Index() {
           </Text>
           <Text fontSize="3xl" align={{ base: "center", md: "left" }}>
             And I'm a{" "}
-            <Text as="span" color="red.500" fontSize="4xl" ml={2}>
+            <Text
+              as="span"
+              color="red.500"
+              textShadow="1px 1px black"
+              fontSize="4xl"
+              ml={2}
+            >
               <Typical wrapper="span" steps={steps} loop={1} />
             </Text>
           </Text>
