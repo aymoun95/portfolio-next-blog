@@ -1,6 +1,7 @@
 {
-  "title": "Prinazz Website",
-  "subTitle": " A website for music studio",
-  "description": "Piranz is one of the famous music composer in UAE. The challenge was to keep the music environment in the web. It was hard but in the end we provided a good quality website that satisfied the client.",
-  "img": "/images/wssel.jpg"
+  "title": "Wssel Platform",
+  "subTitle": "A platform for food delivery",
+  "description": "Wssel is a service to deliver food in Saudi Arabia. My main task was to work on adding new features and fixing bugs for the driver project whether it was on the dashboard, mobile app or backend. Also worked on the business and customer apps before turning my focus towards the driver project.",
+  "img": "/images/wssel.jpg",
+  "link": "https://www.wssel.com/"
 }

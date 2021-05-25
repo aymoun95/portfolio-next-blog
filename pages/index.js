@@ -89,7 +89,11 @@ export default function Index() {
               colorScheme="medium"
               icon={<FaMedium />}
             />
-            <SocialMediaBtn href="" colorScheme="github" icon={<FaGithub />} />
+            <SocialMediaBtn
+              href="https://github.com/aymoun95"
+              colorScheme="github"
+              icon={<FaGithub />}
+            />
             <SocialMediaBtn
               href="https://www.linkedin.com/in/ben-zlaouia-aymen/"
               colorScheme="linkedIn"

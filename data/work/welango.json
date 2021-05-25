@@ -1,6 +1,6 @@
 {
-  "title": "Prinazz Website",
-  "subTitle": " A website for music studio",
-  "description": "Piranz is one of the famous music composer in UAE. The challenge was to keep the music environment in the web. It was hard but in the end we provided a good quality website that satisfied the client.",
+  "title": "Welango App",
+  "subTitle": " An app to learn new languages",
+  "description": "Welango is an app that allows you to practice foreign languages through conversations (video and audio) as if you were abroad. Participate in language exchanges, when you want, where you want. I was responsible for developing the whole mobile app (android and ios) and integrating twilio.",
   "img": "/images/welango.png"
 }
