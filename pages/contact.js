@@ -19,35 +19,76 @@ import Button from "../components/custom/Button";
 import ErrorMessage from "../components/custom/ErrorMessage";
 import { InputField } from "../components/custom/InputField";
 import Head from "next/head";
+import { validateField } from "../utils/helpers";
+import { EMAIL_REGEX, NAME_REGEX } from "../utils/regex";
 
 export default function Contact() {
   const shadow = useColorModeValue(
     "0px 5px 5px 0px rgba(0, 0, 0, 0.2)",
     "0px 0px 2px 2px rgba(0, 0, 0, 0.2)"
   );
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [isNameInvalid, setIsNameInvalid] = useState(false);
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const [isMessageInvalid, setIsMessageInvalid] = useState(false);
+
+  const checkFields = () => {
+    const emailValidation = !validateField(email, EMAIL_REGEX);
+    const nameValidation = !validateField(name, NAME_REGEX);
+    const messageValidation = message === "";
+    setIsEmailInvalid(emailValidation);
+    setIsNameInvalid(nameValidation);
+    setIsMessageInvalid(messageValidation);
+
+    return emailValidation || nameValidation || messageValidation;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setIsLoading(true);
+    let data = {
+      name,
+      email,
+      message,
+    };
 
-    try {
-      setIsLoggedIn(true);
-      setIsLoading(false);
-      setShowPassword(false);
-    } catch (error) {
-      setError("Invalid username or password");
-      setIsLoading(false);
-      setEmail("");
-      setPassword("");
-      setShowPassword(false);
+    if (checkFields()) {
+      return;
     }
+    setIsLoading(true);
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setSubmitted(true);
+          setName("");
+          setEmail("");
+          setMessage("");
+        }
+        if (res.status === 403) {
+          setError("Please fill out all fields.");
+        }
+        if (res.status === 406) {
+          setError("Please fill fields with correct info.");
+        }
+      })
+      .catch((e) => {
+        setSubmitted(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -55,9 +96,9 @@ export default function Contact() {
       <Head>
         <title>Contact - Aymen Ben Zlaouia</title>
       </Head>
-      <Flex align="center" justify="center" w="100%">
+      <Flex align="center" justify="center" w="100%" mb={3}>
         <Flex
-          width="70%"
+          width={{ base: "80%", md: "70%" }}
           borderWidth={0}
           borderRadius={8}
           shadow={shadow}
@@ -68,18 +109,9 @@ export default function Contact() {
             w={{ base: "100%", md: "40%" }}
             borderRightWidth={{ base: 0, md: 1 }}
           >
-            {isLoggedIn ? (
+            {submitted ? (
               <Box textAlign="center">
-                <Text>{email} logged in!</Text>
-                <Button
-                  variantColor="orange"
-                  variant="outline"
-                  width="full"
-                  mt={4}
-                  onClick={() => setIsLoggedIn(false)}
-                >
-                  Sign out
-                </Button>
+                <Text>{name} Thank you for sending the email</Text>
               </Box>
             ) : (
               <>
@@ -87,28 +119,44 @@ export default function Contact() {
                   <Heading>Write Me</Heading>
                 </Box>
                 <Box my={4} textAlign="left">
-                  <form onSubmit={handleSubmit}>
-                    {error && <ErrorMessage message={error} />}
-                    <InputField
-                      isRequired
-                      label="Name"
-                      placeholder="Full Name"
-                      size="lg"
-                      variant="flushed"
-                      onChange={(event) =>
-                        setPassword(event.currentTarget.value)
-                      }
-                    />
-                    <InputField
-                      isRequired
-                      label="Email"
-                      mt={6}
-                      size="lg"
-                      placeholder="Example@example.com"
-                      variant="flushed"
-                      onChange={(event) => setEmail(event.currentTarget.value)}
-                    />
-                  </form>
+                  {error && <ErrorMessage message={error} />}
+                  <InputField
+                    isRequired
+                    isInvalid={isNameInvalid}
+                    label="Name"
+                    value={name}
+                    placeholder="Full Name"
+                    size="lg"
+                    variant="flushed"
+                    onChange={(event) => {
+                      setName(event.target.value);
+                    }}
+                    onBlur={() =>
+                      setIsNameInvalid(
+                        !validateField(name, NAME_REGEX) && name !== ""
+                      )
+                    }
+                    id="name"
+                  />
+                  <InputField
+                    isRequired
+                    isInvalid={isEmailInvalid}
+                    label="Email"
+                    value={email}
+                    mt={6}
+                    size="lg"
+                    placeholder="Example@example.com"
+                    variant="flushed"
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
+                    onBlur={() =>
+                      setIsEmailInvalid(
+                        !validateField(email, EMAIL_REGEX) && email !== ""
+                      )
+                    }
+                    id="email"
+                  />
                 </Box>
               </>
             )}
@@ -120,16 +168,19 @@ export default function Contact() {
           >
             <InputField
               textarea
+              isInvalid={isMessageInvalid}
               rows="13"
               size="lg"
               maxLength="700"
+              value={message}
               px={{ base: 8, md: 2 }}
               borderWidth={0}
               height="100%"
               placeholder="Write Message..."
               focusBorderColor="transparent"
               variant="flushed"
-              onChange={(event) => setEmail(event.currentTarget.value)}
+              onChange={(event) => setMessage(event.target.value)}
+              onBlur={() => setIsMessageInvalid(message === "")}
             />
             <Button
               borderRadius={0}
@@ -139,6 +190,7 @@ export default function Contact() {
               bg="red.500"
               variant="solid"
               type="submit"
+              onClick={handleSubmit}
             >
               {isLoading ? (
                 <CircularProgress isIndeterminate size="24px" color="teal" />
