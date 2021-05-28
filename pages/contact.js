@@ -4,14 +4,8 @@ import {
   Flex,
   Box,
   Heading,
-  FormControl,
-  FormLabel,
-  Input,
   CircularProgress,
   Text,
-  InputGroup,
-  InputRightElement,
-  Icon,
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -21,6 +15,8 @@ import { InputField } from "../components/custom/InputField";
 import Head from "next/head";
 import { validateField } from "../utils/helpers";
 import { EMAIL_REGEX, NAME_REGEX } from "../utils/regex";
+import animatedEmail from "../animations/email.json";
+import Lottie from "../components/custom/Lottie";
 
 export default function Contact() {
   const shadow = useColorModeValue(
@@ -72,7 +68,6 @@ export default function Contact() {
       .then((res) => {
         if (res.status === 200) {
           setSubmitted(true);
-          setName("");
           setEmail("");
           setMessage("");
         }
@@ -80,7 +75,7 @@ export default function Contact() {
           setError("Please fill out all fields.");
         }
         if (res.status === 406) {
-          setError("Please fill fields with correct info.");
+          setError("Please fill the fields with correct info.");
         }
       })
       .catch((e) => {
@@ -104,17 +99,30 @@ export default function Contact() {
           shadow={shadow}
           direction={{ base: "column", md: "row" }}
         >
-          <Stack
-            p={8}
-            w={{ base: "100%", md: "40%" }}
-            borderRightWidth={{ base: 0, md: 1 }}
-          >
-            {submitted ? (
-              <Box textAlign="center">
-                <Text>{name} Thank you for sending the email</Text>
-              </Box>
-            ) : (
-              <>
+          {submitted ? (
+            <Flex
+              direction="column"
+              alignItems="center"
+              textAlign="center"
+              m={6}
+              w="90%"
+              h={300}
+              p={2}
+            >
+              <Heading mb={3} color="red.500">
+                {name}
+              </Heading>
+              <Heading>Thank you for sending the email</Heading>
+              <Text>Check the blog from time to time to learn new things</Text>
+              <Lottie animation={animatedEmail} />
+            </Flex>
+          ) : (
+            <>
+              <Stack
+                p={8}
+                w={{ base: "100%", md: "40%" }}
+                borderRightWidth={{ base: 0, md: 1 }}
+              >
                 <Box textAlign="center">
                   <Heading>Write Me</Heading>
                 </Box>
@@ -158,47 +166,52 @@ export default function Contact() {
                     id="email"
                   />
                 </Box>
-              </>
-            )}
-          </Stack>
-          <Flex
-            w={{ base: "100%", md: "60%" }}
-            direction="column"
-            justifyContent="space-between"
-          >
-            <InputField
-              textarea
-              isInvalid={isMessageInvalid}
-              rows="13"
-              size="lg"
-              maxLength="700"
-              value={message}
-              px={{ base: 8, md: 2 }}
-              borderWidth={0}
-              height="100%"
-              placeholder="Write Message..."
-              focusBorderColor="transparent"
-              variant="flushed"
-              onChange={(event) => setMessage(event.target.value)}
-              onBlur={() => setIsMessageInvalid(message === "")}
-            />
-            <Button
-              borderRadius={0}
-              borderBottomLeftRadius={{ base: 8, md: 0 }}
-              borderBottomRightRadius={8}
-              colorScheme="red"
-              bg="red.500"
-              variant="solid"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              {isLoading ? (
-                <CircularProgress isIndeterminate size="24px" color="teal" />
-              ) : (
-                "SUBMIT"
-              )}
-            </Button>
-          </Flex>
+              </Stack>
+              <Flex
+                w={{ base: "100%", md: "60%" }}
+                direction="column"
+                justifyContent="space-between"
+              >
+                <InputField
+                  textarea
+                  isInvalid={isMessageInvalid}
+                  rows="13"
+                  size="lg"
+                  maxLength="700"
+                  value={message}
+                  px={{ base: 8, md: 2 }}
+                  borderWidth={0}
+                  height="100%"
+                  placeholder="Write Message..."
+                  focusBorderColor="transparent"
+                  variant="flushed"
+                  onChange={(event) => setMessage(event.target.value)}
+                  onBlur={() => setIsMessageInvalid(message === "")}
+                />
+                <Button
+                  borderRadius={0}
+                  borderBottomLeftRadius={{ base: 8, md: 0 }}
+                  borderBottomRightRadius={8}
+                  colorScheme="red"
+                  bg="red.500"
+                  variant="solid"
+                  type="submit"
+                  onClick={handleSubmit}
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <CircularProgress
+                      isIndeterminate
+                      size="24px"
+                      color="teal"
+                    />
+                  ) : (
+                    "SUBMIT"
+                  )}
+                </Button>
+              </Flex>{" "}
+            </>
+          )}
         </Flex>
       </Flex>
     </NavBarLayout>
