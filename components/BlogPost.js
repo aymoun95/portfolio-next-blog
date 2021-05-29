@@ -21,7 +21,7 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
               justifyContent="start"
               width="100%"
             >
-              <Heading size="md" as="h3" mb={1} fontWeight="medium">
+              <Heading size="lg" as="h3" mb={1} fontWeight="medium">
                 {title}
               </Heading>
             </Flex>
