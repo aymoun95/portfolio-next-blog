@@ -6,8 +6,15 @@ export default class MyDocument extends NextDocument {
   render() {
     return (
       <Html lang="en">
-        {/* <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" /> */}
-        <Head />
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/inter-var-latin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        </Head>
         <body>
           <ColorModeScript />
           <Main />

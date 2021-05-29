@@ -17,7 +17,7 @@ export default function BlogLayout({ children, frontMatter }) {
   return (
     <NavBarLayout>
       <Head>
-        <title>{slug} - Blog - Benjamin Carlson</title>
+        <title>{slug} - Blog - Aymen Ben Zlaouia</title>
       </Head>
 
       <Stack
@@ -44,8 +44,8 @@ export default function BlogLayout({ children, frontMatter }) {
           <Flex align="center">
             <Avatar
               size="xs"
-              name="Benjamin Carlson"
-              src="../images/portrait.jpeg"
+              name="Aymen Ben Zlaouia"
+              src="/images/portrait.jpeg"
               mr={2}
             />
             <Text fontSize="sm" color={textColor[colorMode]}>
