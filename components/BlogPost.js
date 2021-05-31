@@ -3,8 +3,12 @@ import { Flex, Box, Link } from "@chakra-ui/react";
 import { parseISO, format } from "date-fns";
 import Text from "./custom/Text";
 import Heading from "./custom/Heading";
+// import useSWR from "swr";
+// import fetcher from "../lib/fetcher";
 
 const BlogPost = ({ title, publishedAt, summary, slug }) => {
+  // const { data } = useSWR(`/api/views/${slug}`, fetcher);
+  // const views = data?.total;
   return (
     <NextLink href={`blog/${slug}`} passHref>
       <Link w="100%" _hover={{ textDecoration: "none" }}>
@@ -26,8 +30,10 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
               </Heading>
             </Flex>
 
-            <Text minWidth="140px" textAlign={["left", "right"]} mb={[4, 0]}>
+            <Text minWidth="250px" textAlign={["left", "right"]} mb={[4, 0]}>
               {format(parseISO(publishedAt), "MMMM dd, yyyy")}
+              {/* {` • `}
+              {`${views ? new Number(views).toLocaleString() : "–––"} views`} */}
             </Text>
           </Flex>
           <Text>{summary}</Text>
