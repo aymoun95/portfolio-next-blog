@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import NavBarLayout from "./NavBarLayout";
 import Text from "../components/custom/Text";
 import Heading from "../components/custom/Heading";
+import ViewCounter from "../components/ViewsCounter";
 
 export default function BlogLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode();
@@ -56,6 +57,8 @@ export default function BlogLayout({ children, frontMatter }) {
           </Flex>
           <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
             {frontMatter.readingTime.text}
+            {` • `}
+            <ViewCounter slug={frontMatter.slug} />
           </Text>
         </Flex>
         {children}
