@@ -1,23 +1,15 @@
-import Head from "next/head";
-import NavBarLayout from "../layouts/NavBarLayout";
-import Typical from "react-typical";
-import Text from "../components/custom/Text";
-import ContentLayout from "../layouts/contentLayout";
-import {
-  Box,
-  Stack,
-  Link,
-  Flex,
-  Button,
-  useColorModeValue,
-  useMultiStyleConfig,
-} from "@chakra-ui/react";
-import { Image } from "@chakra-ui/image";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { Box, Flex, Stack, useColorModeValue } from "@chakra-ui/react";
+import Head from "next/head";
+import { FaGithub, FaLinkedinIn, FaMedium } from "react-icons/fa";
+import Typical from "react-typical";
 import ButtonLink from "../components/custom/ButtonLink";
-import { FaMedium, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import SocialMediaBtn from "../components/custom/SocialMediaBtn";
+import Text from "../components/custom/Text";
 import MaskedMe from "../components/svg/MaskedMe";
+import ContentLayout from "../layouts/contentLayout";
+import NavBarLayout from "../layouts/NavBarLayout";
+
 export default function Index() {
   const textHoverColor = useColorModeValue("gray.700", "white");
 

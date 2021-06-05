@@ -46,7 +46,7 @@ export default function BlogLayout({ children, frontMatter }) {
             <Avatar
               size="xs"
               name="Aymen Ben Zlaouia"
-              src="/images/portrait.jpeg"
+              src="/images/me.png"
               mr={2}
             />
             <Text fontSize="sm" color={textColor[colorMode]}>
