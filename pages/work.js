@@ -1,17 +1,10 @@
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Link,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import Head from "next/head";
 import ButtonLink from "../components/custom/ButtonLink";
 import NavBarLayout from "../layouts/NavBarLayout";
 import { getAllFiles } from "../lib/file";
+import OptimizedImage from "../components/custom/OptimizedImage";
 
 export default function work({ projects }) {
   const cardBgColor = useColorModeValue("white", "#171717");
@@ -46,7 +39,7 @@ export default function work({ projects }) {
               flex="1"
               w="100%"
               _hover={{
-                "& img": { transform: "scale(1.1)", zIndex: "1" },
+                "& img": { transform: "scale(1.1)" },
               }}
             >
               <Box
@@ -66,10 +59,10 @@ export default function work({ projects }) {
                   backgroundColor: "#5a24ed38",
                 }}
               >
-                <Image
+                <OptimizedImage
                   src={item.img}
-                  w="100%"
-                  h="100%"
+                  alt={item.title}
+                  layout="fill"
                   objectFit="cover"
                   transition="0.3s ease transform"
                 />

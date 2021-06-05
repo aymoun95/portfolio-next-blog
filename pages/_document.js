@@ -14,6 +14,10 @@ export default class MyDocument extends NextDocument {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <meta
+            name="description"
+            content="A portfolio blog for me 'Aymen Ben Zlaouia' where I showcase the projects that I have worked on, a blog where I learn new things by teaching people the things that I have learnt and  a contact form if someone would like to reach me to correct me something on a blog or hire me for a work or even thank me for the help."
+          ></meta>
         </Head>
         <body>
           <ColorModeScript />
