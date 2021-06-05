@@ -17,6 +17,10 @@ const breakpoints = createBreakpoints({
 const colors = {
   ...chakraTheme.colors,
   darkWhiteHighEmphasize: "rgba(255,255,255,0.87)",
+  gray: {
+    ...chakraTheme.colors.gray,
+    450: "#68778D",
+  },
 };
 
 const overrides = {

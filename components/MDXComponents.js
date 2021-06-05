@@ -13,7 +13,7 @@ import NextLink from "next/link";
 const CustomLink = (props) => {
   const { colorMode } = useColorMode();
   const color = {
-    light: "blue.500",
+    light: "blue.600",
     dark: "blue.500",
   };
 

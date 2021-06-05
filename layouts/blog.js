@@ -55,7 +55,7 @@ export default function BlogLayout({ children, frontMatter }) {
               {format(parseISO(frontMatter.publishedAt), "MMMM dd, yyyy")}
             </Text>
           </Flex>
-          <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
+          <Text fontSize="sm" color="gray.450" minWidth="100px" mt={[2, 0]}>
             {frontMatter.readingTime.text}
             {` • `}
             <ViewCounter slug={frontMatter.slug} />
