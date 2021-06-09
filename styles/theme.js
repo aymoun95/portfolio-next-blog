@@ -19,7 +19,7 @@ const colors = {
   darkWhiteHighEmphasize: "rgba(255,255,255,0.87)",
   gray: {
     ...chakraTheme.colors.gray,
-    450: "#68778D",
+    450: "#54565F",
   },
 };
 
