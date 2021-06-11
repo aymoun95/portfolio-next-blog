@@ -6,9 +6,9 @@ summary: how useEffect hook is diffrent from componentDidMount and what should w
 
 Some think of **hooks** are a way to reproduce lifecycle methods in functional components, well, part of this is wrong. Some even say that `useEffect(()=>{},[])` is the new **componentDidMount** which is wrong.
 
-Let me give you an example: lets say that you want to update the state synchrounoudsly in **componentDidMount** (like reading DOM dimensions...) , in this case react knows how tot trigger a second render without the user even notices that (no screen flickering).
+Let me give you an example: lets say that you want to update the state synchrounoudsly in **componentDidMount** (like reading DOM dimensions...), in this case react knows how to trigger a second render without the user even notices that (no screen flickering).
 
-But can we reproduce that in functional compoennets? quick answer no, why is that? because The function passed to **useEffect** will runs after the render is committed to the screen and with react "speed" the user will see a flicker.
+But can we reproduce that in functional components? quick answer no, why is that? because The function passed to **useEffect** will run after the render is committed to the screen and with react "speed" the user will see a flicker.
 
 let's state the steps of **componentDiDMount** and **useEffect**:
 
@@ -16,9 +16,9 @@ let's state the steps of **componentDiDMount** and **useEffect**:
 
 1. You cause a first render
 2. React calls render method
-3. DidMount runs immediately after the DOM has been mounted and sets state immediately(synchrounous) but before the browser has had a chance to "paint" the DOm
+3. DidMount runs immediately after the DOM has been mounted and sets state immediately(synchrounous) but before the browser has had a chance to "paint" the DOM
 4. render is called again with the new state
-5. the browser now shows the second render which is the initail UI for the user (no flickering)
+5. the browser now shows the second render which is the initial UI for the user (no flickering)
 
 **useEffect**:
 
@@ -29,16 +29,16 @@ let's state the steps of **componentDiDMount** and **useEffect**:
 5. render is called again
 6. browser shows the second render which in this time is not the intial UI thus screen flickering
 
-What is the solution? **useLayoutEffect**, updates scheduled inside **useLayoutEffect** will be flushed synchronously, before the browser has a chance to paint.[check docs](https://reactjs.org/docs/hooks-reference.html#uselayouteffect).
+What is the solution? **useLayoutEffect**, updates scheduled inside **useLayoutEffect** will be flushed synchronously, before the browser has a chance to paint ([check docs](https://reactjs.org/docs/hooks-reference.html#uselayouteffect)).
 
 **useLayoutEffect**:
 
 1. You cause a first render
 2. React calls render method
 3. useLayoutEffect runs, and React waits for it to finish.
-4. The browser paints the initail UI after useLayoutEffect finsihes
+4. The browser paints the initial UI after useLayoutEffect finsihes
 
-That mean that we have to use **useLayoutEffect** instead of **useEffect**? not at all, despite that **useLayoutEffect** was designed to have same timing as **componentDidMount** but we should use it only to avoid the flicker by setting the state synchronously(animations ...) as most of the time we use asynchrounous code in **comopinentDidMount** such as network calls and with that **useEffect** will be better solution then uselayoutEffect
+That means that we have to use **useLayoutEffect** instead of **useEffect**? not at all, despite that **useLayoutEffect** was designed to have same timing as **componentDidMount** but we should use it only to avoid the flicker by setting the state synchronously (animations...) as most of the time we use asynchrounous code in **componentDidMount** such as network calls and with that **useEffect** will be better solution then **useLayoutEffect**.
 
-and like that we can think of hooks in terms of what we do instead of when to do.
+So we can think of hooks in terms of what we do instead of when to do.
 If you want a more detailed explanation I recommand dan's [article](https://overreacted.io/a-complete-guide-to-useeffect/).
