@@ -49,7 +49,7 @@ After a minute or two, your project will finish creating and you will be brought
 
 Next, we will add Firebase to our Android version. We will need to do IOS and Android separately although the process is similar.
 
-![Firebase Console](/images/connect-flutter-to-firebase/console.png)
+![Firebase Console](/images/project-1.jpg)
 
 1. Click on the Android Icon from the overview page
 
@@ -57,29 +57,29 @@ Next, we will add Firebase to our Android version. We will need to do IOS and An
 
 For Android package name use the format: com.[your name or business name].[project name]. For app nickname, use whatever name you’d like.
 
-![Firebase Console](/images/connect-flutter-to-firebase/add.png)
+![Firebase Console](/images/project-1.jpg)
 
 Step 2
 
 3. Download the config file and place it in the app level (in the app folder).
 
-![Firebase Console](/images/connect-flutter-to-firebase/app-level.png)
+![Firebase Console](/images/project-1.jpg)
 
 4. In the project level build.gradle, add the following:
 
-![Firebase Console](/images/connect-flutter-to-firebase/build.gradle.png)
+![Firebase Console](/images/project-1.jpg)
 
 5. In the app level build.gradle add the following:
 
-![Firebase Console](/images/connect-flutter-to-firebase/app-level-build.gradle.png)
+![Firebase Console](/images/project-1.jpg)
 
 6. Lastly, in the app level build.gradle file (same file as above), find the applicationId and change it to the name you chose in step 2. In my case I used com.benjamincarlson.medium_tutorial.
 
-![Firebase Console](/images/connect-flutter-to-firebase/name.png)
+![Firebase Console](/images/project-1.jpg)
 
 At this point we are done. Run the app with an android emulator and make sure everything works. You should see the following image below if everything works as expected.
 
-![Firebase Console](/images/connect-flutter-to-firebase/working-android.png)
+![Firebase Console](/images/project-1.jpg)
 
 ## Add Firebase to IOS
 
