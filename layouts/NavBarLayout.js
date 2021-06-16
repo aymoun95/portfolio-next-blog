@@ -30,7 +30,7 @@ export default function NavBarLayout(props) {
     <Flex
       direction="column"
       align="center"
-      maxW={{ xl: "1200px" }}
+      maxW={{ xl: "100vw" }}
       m="0"
       {...props}
     >
