@@ -102,16 +102,18 @@ export default function work({ projects }) {
                   Hire Me
                 </ButtonLink>
                 {item?.link && (
-                  <ButtonLink
-                    href={item.link}
-                    isExternal
-                    background="none"
-                    color="red.500"
-                    ml={{ base: 0, sm: 3 }}
-                    width={{ base: "100%", sm: "auto" }}
-                  >
-                    Preview <ExternalLinkIcon mx="2px" />
-                  </ButtonLink>
+                  <Box width="100%">
+                    <ButtonLink
+                      href={item.link}
+                      isExternal
+                      background="none"
+                      color="red.500"
+                      ml={{ base: 0, sm: 3 }}
+                      width={{ base: "100%", sm: "auto" }}
+                    >
+                      Preview <ExternalLinkIcon mx="2px" />
+                    </ButtonLink>
+                  </Box>
                 )}
               </Flex>
             </Box>

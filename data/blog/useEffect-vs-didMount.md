@@ -2,6 +2,7 @@
 title: useEffect mental model
 publishedAt: "2021-05-19"
 summary: how useEffect hook is diffrent from componentDidMount and what should we do to supass those diffrences
+tags: ["react", "javascript", "hooks"]
 ---
 
 Some think of **hooks** are a way to reproduce lifecycle methods in functional components, well, part of this is wrong. Some even say that `useEffect(()=>{},[])` is the new **componentDidMount** which is wrong.

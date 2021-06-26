@@ -1,5 +1,6 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
 import { AnimatedFlex } from "../components/custom/AnimatedFlex";
+import Footer from "../components/footer/Footer";
 import Header from "../components/Header/Header";
 
 const pageVariants = {
@@ -52,6 +53,7 @@ export default function NavBarLayout(props) {
       >
         {props.children}
       </AnimatedFlex>
+      <Footer />
     </Flex>
   );
 }
