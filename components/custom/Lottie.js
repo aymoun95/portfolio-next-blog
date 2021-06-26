@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Box } from "@chakra-ui/layout";
 import lottie from "lottie-web";
 export default function Lottie({ animation }) {
   let animationContainer = useRef(null);

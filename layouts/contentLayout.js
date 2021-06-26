@@ -1,14 +1,4 @@
-import Link from "next/link";
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Stack,
-  useColorMode,
-} from "@chakra-ui/react";
-import Text from "../components/custom/Text";
-import Heading from "../components/custom/Heading";
+import { Flex } from "@chakra-ui/react";
 
 export default function ContentLayout({
   title,
@@ -19,12 +9,6 @@ export default function ContentLayout({
   children,
   ...rest
 }) {
-  const { colorMode } = useColorMode();
-  const textColor = {
-    light: "gray.700",
-    dark: "gray.400",
-  };
-
   return (
     <Flex
       align={{ base: "center", md: "flex-start" }}
@@ -43,12 +27,3 @@ export default function ContentLayout({
     </Flex>
   );
 }
-
-ContentLayout.defaultProps = {
-  title: "React landing page with Chakra UI",
-  subtitle:
-    "This is the subheader section where you describe the basic benefits of your product",
-  image: "https://source.unsplash.com/collection/404339/800x600",
-  ctaText: "Create your account now",
-  ctaLink: "/signup",
-};

@@ -46,7 +46,9 @@ const GlobalStyle = ({ children }) => {
             background: ${colorMode === "light"
               ? "rgba(255,255,255,0.87)"
               : "#171717"};
-            // transition: background 0.5s;
+          }
+          * {
+            transition: background 0.5s ease-in;
           }
         `}
       />

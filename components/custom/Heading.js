@@ -4,7 +4,7 @@ export default function Heading({ children, ...rest }) {
   const { colorMode } = useColorMode();
   const headingColor = {
     light: "gray.700",
-    dark: "gray.400",
+    dark: "darkWhiteHighEmphasize",
   };
   return (
     <ChakraHeading color={headingColor[colorMode]} {...rest}>

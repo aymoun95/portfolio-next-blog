@@ -1,29 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import { Stack, useColorModeValue } from "@chakra-ui/react";
+import { Alert, AlertIcon, Box, Flex, Input, Stack } from "@chakra-ui/react";
 import NavBarLayout from "../layouts/NavBarLayout";
-import Heading from "../components/custom/Heading";
 import { getAllFilesFrontMatter } from "../lib/mdx";
 import BlogPost from "../components/BlogPost";
 
 import ContentLayout from "../layouts/contentLayout";
+import FilterTags from "../components/blog/FilterTags";
+import { tagColor } from "../utils/tagColor";
+
+const TAGS = Object.keys(tagColor);
 
 export default function Blog({ posts }) {
-  const headingColor = useColorModeValue("gray.700", "darkWhiteHighEmphasize");
   const [searchValue, setSearchValue] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [blogPosts, setBlogPosts] = useState(posts);
 
-  // const filteredBlogPosts = posts
-  //   .sort(
-  //     (a, b) =>
-  //       Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-  //   )
-  //   .filter((frontMatter) =>
-  //     frontMatter.title.toLowerCase().includes(searchValue.toLowerCase())
-  //   );
+  const filterPosts = (searchFilter) => {
+    const blogsResults = posts.filter(
+      (frontMatter) =>
+        frontMatter.title.toLowerCase().includes(searchFilter.toLowerCase()) &&
+        selectedTags.every((tag) => frontMatter.tags.includes(tag))
+    );
+    setBlogPosts(blogsResults);
+  };
 
-  const sortedBlogPosts = posts.sort(
-    (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-  );
+  const handleChange = (e) => {
+    const newSearchValue = e.target.value.trim();
+    let updatedSearchValue = "";
+    if (newSearchValue.length !== 0) {
+      const searchArray = newSearchValue.split(" ");
+      const removedSearchTags = searchArray.filter((el) => !TAGS.includes(el));
+      updatedSearchValue = removedSearchTags.join(" ");
+    }
+    setSearchValue(updatedSearchValue);
+    filterPosts(updatedSearchValue);
+  };
+
+  useEffect(() => {
+    filterPosts(searchValue);
+  }, [selectedTags]);
 
   return (
     <NavBarLayout>
@@ -32,41 +48,40 @@ export default function Blog({ posts }) {
       </Head>
 
       <ContentLayout>
-        <Stack
-          spacing={4}
-          w={{ base: "100%", md: "100%" }}
-          align={["center", "center", "flex-start", "flex-start"]}
-        >
-          <Heading
-            letterSpacing="tight"
-            mb={4}
-            as="h1"
-            size="2xl"
-            color={headingColor}
-          >
-            Blog ({posts.length} posts)
-          </Heading>
-          {/* <InputGroup mb={4} mr={4} w="100%">
+        <Stack fontSize="16px" px={{ md: "10", lg: "20", xl: "30" }} py="4">
+          <Flex justify="center">
             <Input
-              aria-label="Search by title"
-              placeholder="Search by title"
-              onChange={(e) => setSearchValue(e.target.value)}
-            /> */}
-          {/* <InputRightElement>
-              <SearchIcon color="gray.300" />
-            </InputRightElement>
-          </InputGroup> */}
-          {/* {!filteredBlogPosts.length && (
-            <Box display="block" width="100%">
-              <Text>No posts found :(</Text>
-            </Box>
+              onChange={handleChange}
+              value={`${selectedTags.join(" ")} ${searchValue}`.trim()}
+              variant="outline"
+              placeholder="Search..."
+              maxWidth="400px"
+            />
+          </Flex>
+          <FilterTags
+            handleTagClick={setSelectedTags}
+            selectedTags={selectedTags}
+          />
+
+          {blogPosts.length > 0 ? (
+            blogPosts.map((frontMatter) => (
+              <BlogPost key={frontMatter.title} {...frontMatter} />
+            ))
+          ) : (
+            <Alert
+              status="info"
+              borderRadius="md"
+              d="flex"
+              justifyContent="center"
+              mx="auto"
+              maxWidth="500px"
+              fontWeight="500"
+              alignSelf="center"
+            >
+              <AlertIcon />
+              No blog post has been found!
+            </Alert>
           )}
-          {filteredBlogPosts.map((frontMatter) => (
-            <BlogPost key={frontMatter.title} {...frontMatter} />
-          ))} */}
-          {sortedBlogPosts.map((frontMatter) => (
-            <BlogPost key={frontMatter.title} {...frontMatter} />
-          ))}
         </Stack>
       </ContentLayout>
     </NavBarLayout>
@@ -74,7 +89,9 @@ export default function Blog({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter("blog");
-
+  const data = await getAllFilesFrontMatter("blog");
+  const posts = data.sort(
+    (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+  );
   return { props: { posts } };
 }

@@ -2,6 +2,7 @@
 title: "CSR vs. SSR vs. SSG vs. ISR"
 publishedAt: "2021-06-12"
 summary: "Different rendering approaches and their use cases?"
+tags: ["nextjs", "csr", "ssr", "ssg", "isr"]
 ---
 
 As developers we face lots of challenges other than coding the product (mobile apps, landing pages, dashboards...) especially when it comes to the architecture we choose to reach the best profrmance. Well if you're reading this article that means you came accross the terms (CSR-SSR-SSG-ISR) but you didn't understand them or when to use them. In this blog I'm goign to explain every term and when to use it so in the future, you will be able to build a product with confidence that you have chosen the best approach. Before diving in, you have to know that they are different rendering modes for your website, konwing that lets start explaining them one by one
