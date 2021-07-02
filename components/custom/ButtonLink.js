@@ -15,28 +15,32 @@ export default function ButtonLink({
     ATagOrNextLink = ChakraLink;
   }
   return (
-    <Button
-      fontSize="md"
-      mt={2}
-      borderRadius="md"
-      borderWidth={2}
-      borderColor="red.500"
-      borderStyle="solid"
-      cursor="pointer"
-      fontWeight="bold"
-      background="red.500"
-      color="white"
-      padding="8px 15px"
-      {...rest}
-      _hover={{
-        background: "transparent",
-        ...rest._hover,
-      }}
+    <ATagOrNextLink
+      href={href}
+      isExternal={isExternal}
+      style={{ textDecoration: "none" }}
     >
-      <ATagOrNextLink href={href} isExternal={isExternal}>
+      <Button
+        fontSize="md"
+        mt={2}
+        borderRadius="md"
+        borderWidth={2}
+        borderColor="red.500"
+        borderStyle="solid"
+        cursor="pointer"
+        fontWeight="bold"
+        background="red.500"
+        color="white"
+        padding="8px 15px"
+        {...rest}
+        _hover={{
+          background: "transparent",
+          ...rest._hover,
+        }}
+      >
         {children}
-      </ATagOrNextLink>
-    </Button>
+      </Button>
+    </ATagOrNextLink>
   );
 }
 
