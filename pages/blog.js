@@ -7,39 +7,35 @@ import BlogPost from "../components/BlogPost";
 
 import ContentLayout from "../layouts/contentLayout";
 import FilterTags from "../components/blog/FilterTags";
-import { tagColor } from "../utils/tagColor";
-
-const TAGS = Object.keys(tagColor);
+import { isExistInTags, partition } from "../utils/helpers";
 
 export default function Blog({ posts }) {
   const [searchValue, setSearchValue] = useState("");
-  const [selectedTags, setSelectedTags] = useState([]);
   const [blogPosts, setBlogPosts] = useState(posts);
 
   const filterPosts = (searchFilter) => {
+    const [pass, fail] = partition(searchFilter.split(" "), isExistInTags);
+
+    const selectedTags = pass;
+    const searchTitle = fail.join(" ").trim();
+
     const blogsResults = posts.filter(
       (frontMatter) =>
-        frontMatter.title.toLowerCase().includes(searchFilter.toLowerCase()) &&
+        frontMatter.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
         selectedTags.every((tag) => frontMatter.tags.includes(tag))
     );
     setBlogPosts(blogsResults);
   };
 
   const handleChange = (e) => {
-    const newSearchValue = e.target.value.trim();
-    let updatedSearchValue = "";
-    if (newSearchValue.length !== 0) {
-      const searchArray = newSearchValue.split(" ");
-      const removedSearchTags = searchArray.filter((el) => !TAGS.includes(el));
-      updatedSearchValue = removedSearchTags.join(" ");
-    }
-    setSearchValue(updatedSearchValue);
-    filterPosts(updatedSearchValue);
+    const newSearchValue = e.target.value;
+    setSearchValue(newSearchValue);
+    filterPosts(newSearchValue);
   };
 
   useEffect(() => {
     filterPosts(searchValue);
-  }, [selectedTags]);
+  }, [searchValue]);
 
   return (
     <NavBarLayout>
@@ -52,15 +48,15 @@ export default function Blog({ posts }) {
           <Flex justify="center">
             <Input
               onChange={handleChange}
-              value={`${selectedTags.join(" ")} ${searchValue}`.trim()}
+              value={searchValue}
               variant="outline"
               placeholder="Search..."
               maxWidth="400px"
             />
           </Flex>
           <FilterTags
-            handleTagClick={setSelectedTags}
-            selectedTags={selectedTags}
+            handleTagClick={setSearchValue}
+            searchValue={searchValue}
           />
 
           {blogPosts.length > 0 ? (

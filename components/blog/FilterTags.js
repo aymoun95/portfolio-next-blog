@@ -2,12 +2,17 @@ import { Box, Flex } from "@chakra-ui/layout";
 import { tagColor } from "../../utils/tagColor";
 import TagComponent from "../custom/Tag";
 
-export default function FilterTags({ handleTagClick, selectedTags }) {
+export default function FilterTags({ handleTagClick, searchValue }) {
   const handleClick = (tag) => {
-    if (selectedTags.includes(tag)) {
-      handleTagClick(selectedTags.filter((t) => t !== tag));
+    if (searchValue.length !== 0) {
+      const searchArray = searchValue.split(" ");
+      if (searchArray.includes(tag)) {
+        handleTagClick(searchArray.filter((t) => t !== tag).join(" "));
+      } else {
+        handleTagClick([...searchArray, tag].join(" "));
+      }
     } else {
-      handleTagClick([...selectedTags, tag]);
+      handleTagClick(tag);
     }
   };
   return (
