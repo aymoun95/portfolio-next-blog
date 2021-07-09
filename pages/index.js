@@ -79,16 +79,19 @@ export default function Index() {
             <SocialMediaBtn
               href="https://medium.com/@aymenbenzlaouia95/a-brief-history-on-javascript-ba2407e67bcd"
               colorScheme="medium"
+              ariaLabel="Medium"
               icon={<FaMedium />}
             />
             <SocialMediaBtn
               href="https://github.com/aymoun95"
               colorScheme="github"
+              ariaLabel="Github"
               icon={<FaGithub />}
             />
             <SocialMediaBtn
               href="https://www.linkedin.com/in/ben-zlaouia-aymen/"
               colorScheme="linkedIn"
+              ariaLabel="Linkedin"
               icon={<FaLinkedinIn />}
             />
           </Box>
