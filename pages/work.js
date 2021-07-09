@@ -84,7 +84,7 @@ export default function work({ projects }) {
               <Text fontSize="1.6rem" mb="10px">
                 {item.subTitle}
               </Text>
-              <Text color="gray" mb="10px">
+              <Text color="#818181" mb="10px">
                 {item.description}
               </Text>
               <Flex

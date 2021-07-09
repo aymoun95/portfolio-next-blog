@@ -1,13 +1,13 @@
 import { Button, Link, useColorMode } from "@chakra-ui/react";
 
-export default function SocialMediaBtn({ icon, colorScheme, href }) {
+export default function SocialMediaBtn({ icon, colorScheme, href, ariaLabel }) {
   const { colorMode } = useColorMode();
   const color = {
     light: "gray.700",
     dark: "gray.300",
   };
   return (
-    <Link href={href} isExternal>
+    <Link href={href} isExternal aria-label={ariaLabel}>
       <Button
         _hover={{
           color: "red.500",
@@ -19,6 +19,7 @@ export default function SocialMediaBtn({ icon, colorScheme, href }) {
         variant="link"
         colorScheme={colorScheme}
         leftIcon={icon}
+        aria-label={ariaLabel}
       />
     </Link>
   );
