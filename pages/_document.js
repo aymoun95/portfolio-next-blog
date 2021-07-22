@@ -14,11 +14,11 @@ export default class MyDocument extends NextDocument {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          <link
+          {/* <link
             rel="shortcut icon"
             href="/images/favicon/favicon.ico"
             type="image/x-icon"
-          />
+          /> */}
           <link
             rel="apple-touch-icon"
             sizes="180x180"

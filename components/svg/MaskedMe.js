@@ -23,10 +23,12 @@ export default function MaskedMe() {
   -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
         />
         <image
-          x="-5"
-          y="-25"
+          x="15"
+          y="-20"
+          height="250px"
+          width="200px"
           className="blob__img"
-          xlinkHref="/images/me.png"
+          xlinkHref="/images/banner.png"
         />
       </g>
       <style jsx>{`
