@@ -14,18 +14,19 @@ const pageVariants = {
     opacity: 0,
   },
 };
+
+const bgColor = {
+  light: "white",
+  dark: "#171717",
+};
+
+const color = {
+  light: "black",
+  dark: "white",
+};
+
 export default function NavBarLayout(props) {
   const { colorMode } = useColorMode();
-
-  const bgColor = {
-    light: "white",
-    dark: "#171717",
-  };
-
-  const color = {
-    light: "black",
-    dark: "white",
-  };
 
   return (
     <Flex

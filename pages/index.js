@@ -10,10 +10,9 @@ import MaskedMe from "../components/svg/MaskedMe";
 import ContentLayout from "../layouts/contentLayout";
 import NavBarLayout from "../layouts/NavBarLayout";
 
+const steps = ["Developer 👋", 1000, "Full Stack Developer 👌", 2000];
 export default function Index() {
   const textHoverColor = useColorModeValue("gray.700", "white");
-
-  const steps = ["Developer 👋", 1000, "Full Stack Developer 👌", 2000];
 
   return (
     <NavBarLayout>
@@ -100,7 +99,7 @@ export default function Index() {
           w={{ base: "80%", md: "40%" }}
           mb={{ base: 12, md: 0 }}
           position="relative"
-          right={{ base: 5, md: -5 }}
+          right={{ base: 0, md: 10 }}
           top={{ base: 0, md: "-3rem" }}
         >
           <MaskedMe />

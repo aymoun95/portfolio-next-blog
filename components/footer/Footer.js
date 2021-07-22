@@ -14,7 +14,7 @@ const Footer = () => (
         maxW="100%"
         mx="auto"
       >
-        <Box py="2">
+        <Box>
           <Text>
             Built with{" "}
             <span role="img" aria-label="red heart">
