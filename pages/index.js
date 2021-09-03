@@ -67,7 +67,7 @@ export default function Index() {
               color="red.500"
               ml={{ base: 0, md: 3 }}
             >
-              See My Resume <ExternalLinkIcon mx="2px" />
+              Check Resume <ExternalLinkIcon mx="2px" />
             </ButtonLink>
           </Flex>
           <Box

@@ -45,7 +45,7 @@ export default function Blog({ posts }) {
 
       <ContentLayout>
         <Stack fontSize="16px" px={{ md: "10", lg: "20", xl: "30" }} py="4">
-          <Flex justify="center">
+          {/* <Flex justify="center">
             <Input
               onChange={handleChange}
               value={searchValue}
@@ -57,7 +57,7 @@ export default function Blog({ posts }) {
           <FilterTags
             handleTagClick={setSearchValue}
             searchValue={searchValue}
-          />
+          /> */}
 
           {blogPosts.length > 0 ? (
             blogPosts.map((frontMatter) => (
