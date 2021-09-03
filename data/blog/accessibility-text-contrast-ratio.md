@@ -2,7 +2,7 @@
 title: "Accessibility and text contrast ratio"
 publishedAt: "2021-06-05"
 summary: "How text colors can downgride your site accessibility rating and how you can fix that?"
-tags: ["html", "css"]
+tags: ["html", "css", "accessibilty"]
 ---
 
 Contrast ratio is the ratio between the maximum and minimum brightness. A text with a low contrast ratio is hard to read especially for people with low vision, for example we always use our phone outside in the sun and we always adjust the brightness so the text have sufficent contrast so we are able to read it.
