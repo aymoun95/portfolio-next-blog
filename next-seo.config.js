@@ -1,27 +1,15 @@
 const title = "Aymen Ben Zlaouia blog portflio";
-const description = "A cool, very detailed, description.";
+const description =
+  "A portfolio that presents what I do exactly and a blog to help people and also for me to learn by teaching.";
 
 const SEO = {
   title,
   description,
-  canonical: "https://example.io",
+  url: "where to deploy",
+  site_name: title,
   openGraph: {
     type: "website",
-    locale: "en_IE",
-    url: "https://example.io",
-    title,
-    description,
-    images: [
-      {
-        url: "https://example.io/favicon.ico",
-        alt: title,
-      },
-    ],
-  },
-  twitter: {
-    handle: "@bjmncrlsn",
-    site: "@bjmncrlsn",
-    cardType: "summary_large_image",
+    locale: "en_US",
   },
 };
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { DefaultSeo } from "next-seo";
+import SEO from "../next-seo.config";
 import {
   ChakraProvider,
   ColorModeProvider,
@@ -59,18 +61,22 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider resetCSS theme={customTheme}>
-      <ColorModeProvider
-        options={{
-          initialColorMode: "light",
-          useSystemColorMode: true,
-        }}
-      >
-        <GlobalStyle>
-          <Component {...pageProps} />
-        </GlobalStyle>
-      </ColorModeProvider>
-    </ChakraProvider>
+    <>
+      <DefaultSeo {...SEO} />
+
+      <ChakraProvider resetCSS theme={customTheme}>
+        <ColorModeProvider
+          options={{
+            initialColorMode: "light",
+            useSystemColorMode: true,
+          }}
+        >
+          <GlobalStyle>
+            <Component {...pageProps} />
+          </GlobalStyle>
+        </ColorModeProvider>
+      </ChakraProvider>
+    </>
   );
 }
 

@@ -14,11 +14,11 @@ export default class MyDocument extends NextDocument {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          {/* <link
+          <link
             rel="shortcut icon"
             href="/images/favicon/favicon.ico"
             type="image/x-icon"
-          /> */}
+          />
           <link
             rel="icon"
             type="image/png"
@@ -43,10 +43,10 @@ export default class MyDocument extends NextDocument {
             color="#5bbad5"
           />
 
-          <meta
+          {/* <meta
             name="description"
             content="A portfolio blog for me 'Aymen Ben Zlaouia' where I showcase the projects that I have worked on, a blog where I learn new things by teaching people the things that I have learnt and  a contact form if someone would like to reach me to correct me something on a blog or hire me for a work or even thank me for the help."
-          ></meta>
+          ></meta> */}
         </Head>
         <body>
           <ColorModeScript />
