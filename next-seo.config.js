@@ -5,7 +5,7 @@ const description =
 const SEO = {
   title,
   description,
-  url: "where to deploy",
+  url: process.env.DEPLOY_URL,
   site_name: title,
   openGraph: {
     type: "website",

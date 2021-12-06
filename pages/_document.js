@@ -36,17 +36,12 @@ export default class MyDocument extends NextDocument {
             sizes="180x180"
             href="/images/favicon/apple-touch-icon.png"
           />
-          <link rel="manifest" href="/site.webmanifest" />
+          {/* <link rel="manifest" href="/site.webmanifest" /> */}
           <link
             rel="mask-icon"
             href="/images/favicon/safari-pinned-tab.svg"
             color="#5bbad5"
           />
-
-          {/* <meta
-            name="description"
-            content="A portfolio blog for me 'Aymen Ben Zlaouia' where I showcase the projects that I have worked on, a blog where I learn new things by teaching people the things that I have learnt and  a contact form if someone would like to reach me to correct me something on a blog or hire me for a work or even thank me for the help."
-          ></meta> */}
         </Head>
         <body>
           <ColorModeScript />
