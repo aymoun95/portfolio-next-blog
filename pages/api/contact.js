@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   auth: {
     user: process.env.EMAIL_HOST,
-    pass: process.env.EMAI_PASS,
+    pass: process.env.EMAIL_PASS,
   },
   secure: true,
 });
@@ -32,7 +32,6 @@ export default async function (req, res) {
     res.status(200);
     return res.send("success");
   } catch (err) {
-    console.log("error nodemailer", err);
     res.status(500);
     return res.send("fail");
   }
