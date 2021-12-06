@@ -1,11 +1,11 @@
 ---
 title: "Accessibility and text contrast ratio"
-publishedAt: "2021-06-05"
-summary: "How text colors can downgride your site accessibility rating and how you can fix that?"
+publishedAt: "2021-12-06"
+summary: "How text colors can downgrade your site accessibility rating and how you can fix that?"
 tags: ["html", "css", "accessibilty"]
 ---
 
-Contrast ratio is the ratio between the maximum and minimum brightness. A text with a low contrast ratio is hard to read especially for people with low vision, for example we always use our phone outside in the sun and we always adjust the brightness so the text have sufficent contrast so we are able to read it.
+Contrast ratio is the ratio between the maximum and minimum brightness. A text with a low contrast ratio is hard to read especially for people with low vision, for example we always use our phone outside in the sun and we always adjust the brightness so the text have sufficient contrast so we are able to read it.
 
 ### Lighthouse
 
@@ -15,7 +15,7 @@ To test accessibility within a page use Lighthouse in chrome DevTools, it will h
 
 ![Accessibility text contrast ratio problem.](/images/blogs/contrast-ratio/problem.png "Accessibility text contrast ratio problem.")
 
-## Contarst ratio requirements
+## Contrast ratio requirements
 
 Before diging into how to fix the issue, we must know that lighthouse uses [success criterion 1.4.3 from WCAG 2.1](https://www.w3.org/TR/WCAG21/#contrast-minimum):
 
@@ -37,21 +37,21 @@ To fix the text contrast ratio problem just follow the steps below:
 
 ![text contrast ratio failure.](/images/blogs/contrast-ratio/contrast-failure.png "text contrast ratio failure.")
 
-- In case of failure(red icon), there will be suggested colors in the contrast ratio section (it can be expanded) which are the color boxes next to contrast ratio levels (AA and AAA).
+- In case of failure (red icon), there will be suggested colors in the contrast ratio section (it can be expanded) which are the color boxes next to contrast ratio levels (AA and AAA).
 
 ![Choosing the color of AA level.](/images/blogs/contrast-ratio/aa-level.png "Choosing the color of AA level.")
 
 ![Choosing the color of AAA level.](/images/blogs/contrast-ratio/aaa-level.png "Choosing the color of AAA level.")
 
-- If the proposed color dosen't suit your needs then you can use HSLA color format and adjust the lightness according to your prefences but also make sure that it meets the contrast level requirements for your text, contrast ratio will be updated while changing the color.
+- If the proposed color dosen't suit your needs then you can use HSLA color format and adjust the lightness according to your prefrences but also make sure that it meets the contrast level requirements for your text, contrast ratio will be updated while changing the color.
 
 ![HSLA color format.](/images/blogs/contrast-ratio/hsla.png "HSLA color format.")
 
-- Another method is that you can choose the color from within the color gradient picker at the top of the dialog. But how? you will see 2 white lines which will show you the contrast thereshold, for the bottom line any color from under will pass the AAA contrast requirements , any color in between the lines will pass the AA contrast requirements and any color above the top line will fail.
+- Another method is that you can choose the color from within the color gradient picker at the top of the dialog. But how? you will see 2 white lines which will show you the contrast threshold, for the bottom line any color from under will pass the AAA contrast requirements, any color in between the lines will pass the AA contrast requirements and any color above the top line will fail.
 
 ![color gradient.](/images/blogs/contrast-ratio/color-gradient.png "color gradient.")
 
-- If you do not see the contrast ratio that means no backgroud color is set on the element or the parent element, also sometimes with background color defined, no information displayed about the contrast ratio. So what to do in that case?
+- If you do not see the contrast ratio that means no background color is set on the element or the parent element, also sometimes with background color defined, no information displayed about the contrast ratio. So what to do in that case?
 
 ![no contrast ratio info.](/images/blogs/contrast-ratio/no-info.png "no contrast ratio info.")
 
