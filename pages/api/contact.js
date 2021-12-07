@@ -29,12 +29,12 @@ export default async function (req, res) {
     subject: `Message From ${name}`,
     text: message,
   };
-
   try {
     await transporter.sendMail(mailData);
     res.status(200);
     return res.send("success");
   } catch (err) {
+    console.log({ err });
     res.status(200);
     return res.send("fail");
   }
