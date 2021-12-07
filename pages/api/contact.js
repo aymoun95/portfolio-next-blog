@@ -2,11 +2,14 @@ import nodemailer from "nodemailer";
 import { validateField } from "../../utils/helpers";
 import { EMAIL_REGEX, NAME_REGEX } from "../../utils/regex";
 const transporter = nodemailer.createTransport({
-  port: 465,
-  host: "smtp.gmail.com",
+  service: "gmail",
   auth: {
+    type: "OAuth2",
     user: process.env.EMAIL_HOST,
     pass: process.env.EMAIL_PASS,
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
   secure: true,
 });
