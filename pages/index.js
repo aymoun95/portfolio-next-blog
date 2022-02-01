@@ -55,13 +55,13 @@ export default function Index() {
             <ButtonLink
               href="/contact"
               _hover={{
-                color: textHoverColor,
+                color: textHoverColor
               }}
             >
               Hire Me
             </ButtonLink>
             <ButtonLink
-              href="http://aymen.benzlaouia.netcv.com"
+              href="https://aymen-ben-zlaouia.netlify.app/"
               isExternal
               background="none"
               color="red.500"
