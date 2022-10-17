@@ -19,7 +19,7 @@ Let's consider that the console.log is the call to the api. What is the problem 
 ![Result of the before code.](/images/blogs/debounce/console-no-debounce.png 'Result of the before code.')
 
 So how to solve this? Short answer => **Debouncing** 😎.  
-Like we said at the begining of the article, we will try to not call the api that often, it means not on every key stroke but we will use a delay. Before going to the debounce function implementation let's check how the components became:
+Like we said at the beginning of the article, we will try to not call the api that often, it means not on every key stroke but we will use a delay. Before going to the debounce function implementation let's check how the components became:
 
 ![Class component with no debounce.](/images/blogs/debounce/class-with-debounce.png 'Class component with no debounce.')
 
