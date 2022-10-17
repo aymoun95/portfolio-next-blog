@@ -1,41 +1,35 @@
-import { Flex, useColorMode } from "@chakra-ui/react";
-import { AnimatedFlex } from "../components/custom/AnimatedFlex";
-import Footer from "../components/footer/Footer";
-import Header from "../components/Header/Header";
+import { Flex, useColorMode } from '@chakra-ui/react';
+import { AnimatedFlex } from '../components/custom/AnimatedFlex';
+import Footer from '../components/footer/Footer';
+import Header from '../components/Header/Header';
 
 const pageVariants = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   animate: {
-    opacity: 1,
+    opacity: 1
   },
   out: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 
 const bgColor = {
-  light: "white",
-  dark: "#171717",
+  light: 'white',
+  dark: '#171717'
 };
 
 const color = {
-  light: "black",
-  dark: "white",
+  light: 'black',
+  dark: 'white'
 };
 
 export default function NavBarLayout(props) {
   const { colorMode } = useColorMode();
 
   return (
-    <Flex
-      direction="column"
-      align="center"
-      maxW={{ xl: "100vw" }}
-      m="0"
-      {...props}
-    >
+    <Flex direction="column" maxW={{ xl: '100vw' }} m="0" minHeight="100vh" {...props}>
       <Header />
       <AnimatedFlex
         as="main"
@@ -50,8 +44,7 @@ export default function NavBarLayout(props) {
         exit="out"
         animate="animate"
         variants={pageVariants}
-        transition={{ duration: 0.5 }}
-      >
+        transition={{ duration: 0.5 }}>
         {props.children}
       </AnimatedFlex>
       <Footer />

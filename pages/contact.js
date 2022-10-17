@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import NavBarLayout from "../layouts/NavBarLayout";
+import React, { useState } from 'react';
+import NavBarLayout from '../layouts/NavBarLayout';
 import {
   Flex,
   Box,
@@ -7,28 +7,29 @@ import {
   CircularProgress,
   Text,
   Stack,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import Button from "../components/custom/Button";
-import ErrorMessage from "../components/custom/ErrorMessage";
-import { InputField } from "../components/custom/InputField";
-import Head from "next/head";
-import { validateField } from "../utils/helpers";
-import { EMAIL_REGEX, NAME_REGEX } from "../utils/regex";
-import animatedEmail from "../animations/email.json";
-import Lottie from "../components/custom/Lottie";
+  useColorModeValue
+} from '@chakra-ui/react';
+import Button from '../components/custom/Button';
+import ErrorMessage from '../components/custom/ErrorMessage';
+import { InputField } from '../components/custom/InputField';
+import Head from 'next/head';
+import { validateField } from '../utils/helpers';
+import { EMAIL_REGEX, NAME_REGEX } from '../utils/regex';
+import animatedEmail from '../animations/email.json';
+import Lottie from '../components/custom/Lottie';
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
   const shadow = useColorModeValue(
-    "0px 5px 5px 0px rgba(0, 0, 0, 0.2)",
-    "0px 0px 2px 2px rgba(0, 0, 0, 0.2)"
+    '0px 5px 5px 0px rgba(0, 0, 0, 0.2)',
+    '0px 0px 2px 2px rgba(0, 0, 0, 0.2)'
   );
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error] = useState('');
   const [isNameInvalid, setIsNameInvalid] = useState(false);
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const [isMessageInvalid, setIsMessageInvalid] = useState(false);
@@ -36,7 +37,7 @@ export default function Contact() {
   const checkFields = () => {
     const emailValidation = !validateField(email, EMAIL_REGEX);
     const nameValidation = !validateField(name, NAME_REGEX);
-    const messageValidation = message === "";
+    const messageValidation = message === '';
     setIsEmailInvalid(emailValidation);
     setIsNameInvalid(nameValidation);
     setIsMessageInvalid(messageValidation);
@@ -47,36 +48,36 @@ export default function Contact() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let data = {
-      name,
-      email,
-      message,
-    };
-
     if (checkFields()) {
       return;
     }
     setIsLoading(true);
-    fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+
+    const mailData = {
+      from_name: `${name} <${email}>`,
+      user_email: email,
+      to_name: 'aymenbenzlaouia95@gmail.com',
+      message
+    };
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        mailData,
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+      )
       .then((res) => {
         if (res.status === 200) {
           setSubmitted(true);
-          setEmail("");
-          setMessage("");
+          setEmail('');
+          setMessage('');
         }
-        if (res.status === 403) {
-          setError("Please fill out all fields.");
-        }
-        if (res.status === 406) {
-          setError("Please fill the fields with correct info.");
-        }
+        // if (res.status === 403) {
+        //   setError("Please fill out all fields.");
+        // }
+        // if (res.status === 406) {
+        //   setError("Please fill the fields with correct info.");
+        // }
       })
       .catch((e) => {
         setSubmitted(true);
@@ -93,12 +94,11 @@ export default function Contact() {
       </Head>
       <Flex align="center" justify="center" w="100%" mb={3}>
         <Flex
-          width={{ base: "80%", md: "70%" }}
+          width={{ base: '80%', md: '70%' }}
           borderWidth={0}
           borderRadius={8}
           shadow={shadow}
-          direction={{ base: "column", md: "row" }}
-        >
+          direction={{ base: 'column', md: 'row' }}>
           {submitted ? (
             <Flex
               direction="column"
@@ -107,8 +107,7 @@ export default function Contact() {
               m={6}
               w="90%"
               h={300}
-              p={2}
-            >
+              p={2}>
               <Heading mb={3} color="red.500">
                 {name}
               </Heading>
@@ -118,11 +117,7 @@ export default function Contact() {
             </Flex>
           ) : (
             <>
-              <Stack
-                p={8}
-                w={{ base: "100%", md: "40%" }}
-                borderRightWidth={{ base: 0, md: 1 }}
-              >
+              <Stack p={8} w={{ base: '100%', md: '40%' }} borderRightWidth={{ base: 0, md: 1 }}>
                 <Box textAlign="center">
                   <Heading>Write Me</Heading>
                 </Box>
@@ -139,11 +134,7 @@ export default function Contact() {
                     onChange={(event) => {
                       setName(event.target.value);
                     }}
-                    onBlur={() =>
-                      setIsNameInvalid(
-                        !validateField(name, NAME_REGEX) && name !== ""
-                      )
-                    }
+                    onBlur={() => setIsNameInvalid(!validateField(name, NAME_REGEX) && name !== '')}
                     id="name"
                   />
                   <InputField
@@ -159,19 +150,16 @@ export default function Contact() {
                       setEmail(event.target.value);
                     }}
                     onBlur={() =>
-                      setIsEmailInvalid(
-                        !validateField(email, EMAIL_REGEX) && email !== ""
-                      )
+                      setIsEmailInvalid(!validateField(email, EMAIL_REGEX) && email !== '')
                     }
                     id="email"
                   />
                 </Box>
               </Stack>
               <Flex
-                w={{ base: "100%", md: "60%" }}
+                w={{ base: '100%', md: '60%' }}
                 direction="column"
-                justifyContent="space-between"
-              >
+                justifyContent="space-between">
                 <InputField
                   textarea
                   isInvalid={isMessageInvalid}
@@ -186,7 +174,7 @@ export default function Contact() {
                   focusBorderColor="transparent"
                   variant="flushed"
                   onChange={(event) => setMessage(event.target.value)}
-                  onBlur={() => setIsMessageInvalid(message === "")}
+                  onBlur={() => setIsMessageInvalid(message === '')}
                 />
                 <Button
                   borderRadius={0}
@@ -197,19 +185,14 @@ export default function Contact() {
                   variant="solid"
                   type="submit"
                   onClick={handleSubmit}
-                  disabled={isLoading}
-                >
+                  disabled={isLoading}>
                   {isLoading ? (
-                    <CircularProgress
-                      isIndeterminate
-                      size="24px"
-                      color="teal"
-                    />
+                    <CircularProgress isIndeterminate size="24px" color="teal" />
                   ) : (
-                    "SUBMIT"
+                    'SUBMIT'
                   )}
                 </Button>
-              </Flex>{" "}
+              </Flex>{' '}
             </>
           )}
         </Flex>
