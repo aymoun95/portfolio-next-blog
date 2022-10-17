@@ -1,20 +1,20 @@
-import Head from "next/head";
-import { parseISO, format } from "date-fns";
-import { useColorMode, Flex, Stack, Avatar } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import NavBarLayout from "./NavBarLayout";
-import Text from "../components/custom/Text";
-import Heading from "../components/custom/Heading";
-import ViewCounter from "../components/ViewsCounter";
+import Head from 'next/head';
+import { parseISO, format } from 'date-fns';
+import { useColorMode, Flex, Stack, Avatar } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import NavBarLayout from './NavBarLayout';
+import Text from '../components/custom/Text';
+import Heading from '../components/custom/Heading';
+import ViewCounter from '../components/ViewsCounter';
 
 export default function BlogLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode();
   const textColor = {
-    light: "gray.700",
-    dark: "gray.400",
+    light: 'gray.700',
+    dark: 'gray.400'
   };
   const router = useRouter();
-  const slug = router.asPath.replace("/blog/", "");
+  const slug = router.asPath.replace('/blog/', '');
   return (
     <NavBarLayout>
       <Head>
@@ -29,30 +29,23 @@ export default function BlogLayout({ children, frontMatter }) {
         m="0 auto 4rem auto"
         maxWidth="700px"
         w="100%"
-        px={2}
-      >
-        <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+        px={2}>
+        <Heading letterSpacing="tight" mb={2} as="h1" size="2xl" backButton={true}>
           {frontMatter.title}
         </Heading>
         <Flex
           justify="space-between"
-          align={["initial", "center"]}
-          direction={["column", "row"]}
+          align={['initial', 'center']}
+          direction={['column', 'row']}
           mt={2}
           w="100%"
-          mb={4}
-        >
+          mb={4}>
           <Flex align="center">
-            <Avatar
-              size="xs"
-              name="Aymen Ben Zlaouia"
-              src="/images/me.png"
-              mr={2}
-            />
+            <Avatar size="xs" name="Aymen Ben Zlaouia" src="/images/me.png" mr={2} />
             <Text fontSize="sm" color={textColor[colorMode]}>
               {frontMatter.by}
-              {"Aymen Ben Zlaouia / "}
-              {format(parseISO(frontMatter.publishedAt), "MMMM dd, yyyy")}
+              {'Aymen Ben Zlaouia / '}
+              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </Text>
           </Flex>
           <Text fontSize="sm" color="gray.450" minWidth="100px" mt={[2, 0]}>
