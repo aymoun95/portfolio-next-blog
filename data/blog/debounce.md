@@ -38,7 +38,7 @@ Magic right! now let's go to the actual implementation of the debounce function
 ![Debounce function.](/images/blogs/debounce/debounce.png 'Debounce function.')
 
 What! that's it?? Yes this small piece of code is what it takes to make the UX much better.
-Let's start by tearing it down piece by piece. The debounce function accepts 2 params the function that we want to delay its execution when called and the delay. **debounce** returns a function which when called will run at first time setTimeout which will call the **fn** param after **delay** if **debounce** is called again then the **timeout** variable will have an id and it will be cleard and a new delay timer is started.
+Let's start by tearing it down piece by piece. The debounce function accepts 2 params the function that we want to delay its execution when called and the delay. **debounce** returns a function which when called will run at first time setTimeout which will call the **fn** param after **delay** if **debounce** is called again then the **timeout** variable will have an id and it will be cleared and a new delay timer is started.
 
 Also what we could have done is to debounce the value itself of the search box and make a custom hook for that for the functional component, I will leave this as an exercise for you.
 
