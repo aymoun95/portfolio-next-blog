@@ -1,4 +1,4 @@
-import { Tag } from "@chakra-ui/react";
+import { Tag } from '@chakra-ui/react';
 
 const TagComponent = ({ children, color, ...props }) => (
   <>
@@ -15,8 +15,7 @@ const TagComponent = ({ children, color, ...props }) => (
       transitionDuration="250ms"
       userSelect="none"
       _hover={{ backgroundColor: color.hover }}
-      {...props}
-    >
+      {...props}>
       {children}
     </Tag>
   </>

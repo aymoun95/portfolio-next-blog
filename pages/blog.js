@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import Head from "next/head";
-import { Alert, AlertIcon, Box, Flex, Input, Stack } from "@chakra-ui/react";
-import NavBarLayout from "../layouts/NavBarLayout";
-import { getAllFilesFrontMatter } from "../lib/mdx";
-import BlogPost from "../components/BlogPost";
+import { Alert, AlertIcon, Flex, Input, Stack } from '@chakra-ui/react';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import BlogPost from '../components/BlogPost';
+import NavBarLayout from '../layouts/NavBarLayout';
+import { getAllFilesFrontMatter } from '../lib/mdx';
 
-import ContentLayout from "../layouts/contentLayout";
-import FilterTags from "../components/blog/FilterTags";
-import { isExistInTags, partition } from "../utils/helpers";
+import FilterTags from '../components/blog/FilterTags';
+import ContentLayout from '../layouts/contentLayout';
+import { isExistInTags, partition } from '../utils/helpers';
 
 export default function Blog({ posts }) {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [blogPosts, setBlogPosts] = useState(posts);
 
   const filterPosts = (searchFilter) => {
-    const [pass, fail] = partition(searchFilter.split(" "), isExistInTags);
+    const [pass, fail] = partition(searchFilter.split(' '), isExistInTags);
 
     const selectedTags = pass;
-    const searchTitle = fail.join(" ").trim();
+    const searchTitle = fail.join(' ').trim();
 
     const blogsResults = posts.filter(
       (frontMatter) =>
@@ -44,8 +44,8 @@ export default function Blog({ posts }) {
       </Head>
 
       <ContentLayout>
-        <Stack fontSize="16px" px={{ md: "10", lg: "20", xl: "30" }} py="4">
-          {/* <Flex justify="center">
+        <Stack fontSize="16px" px={{ md: '10', lg: '20', xl: '30' }} py="4">
+          <Flex justify="center">
             <Input
               onChange={handleChange}
               value={searchValue}
@@ -54,15 +54,10 @@ export default function Blog({ posts }) {
               maxWidth="400px"
             />
           </Flex>
-          <FilterTags
-            handleTagClick={setSearchValue}
-            searchValue={searchValue}
-          /> */}
+          <FilterTags handleTagClick={setSearchValue} searchValue={searchValue} />
 
           {blogPosts.length > 0 ? (
-            blogPosts.map((frontMatter) => (
-              <BlogPost key={frontMatter.title} {...frontMatter} />
-            ))
+            blogPosts.map((frontMatter) => <BlogPost key={frontMatter.title} {...frontMatter} />)
           ) : (
             <Alert
               status="info"
@@ -72,8 +67,7 @@ export default function Blog({ posts }) {
               mx="auto"
               maxWidth="500px"
               fontWeight="500"
-              alignSelf="center"
-            >
+              alignSelf="center">
               <AlertIcon />
               No blog post has been found!
             </Alert>
@@ -85,7 +79,7 @@ export default function Blog({ posts }) {
 }
 
 export async function getStaticProps() {
-  const data = await getAllFilesFrontMatter("blog");
+  const data = await getAllFilesFrontMatter('blog');
   const posts = data.sort(
     (a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
   );

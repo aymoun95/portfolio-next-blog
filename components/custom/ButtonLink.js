@@ -1,25 +1,14 @@
-import { Button, Link as ChakraLink } from "@chakra-ui/react";
+import { Button, Link as ChakraLink } from '@chakra-ui/react';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-export default function ButtonLink({
-  href,
-  children,
-  style,
-  passHref,
-  isExternal,
-  ...rest
-}) {
+export default function ButtonLink({ href, children, style, passHref, isExternal, ...rest }) {
   let ATagOrNextLink = Link;
   if (isExternal) {
     ATagOrNextLink = ChakraLink;
   }
   return (
-    <ATagOrNextLink
-      href={href}
-      isExternal={isExternal}
-      style={{ textDecoration: "none" }}
-    >
+    <ATagOrNextLink href={href} isExternal={isExternal} style={{ textDecoration: 'none' }}>
       <Button
         fontSize="md"
         mt={2}
@@ -34,10 +23,9 @@ export default function ButtonLink({
         padding="8px 15px"
         {...rest}
         _hover={{
-          background: "transparent",
-          ...rest._hover,
-        }}
-      >
+          background: 'transparent',
+          ...rest._hover
+        }}>
         {children}
       </Button>
     </ATagOrNextLink>
@@ -45,5 +33,5 @@ export default function ButtonLink({
 }
 
 ButtonLink.defaultProps = {
-  isExternal: false,
+  isExternal: false
 };

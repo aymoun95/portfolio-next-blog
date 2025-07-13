@@ -1,18 +1,16 @@
-import { useEffect, useRef } from "react";
-import lottie from "lottie-web";
+import lottie from 'lottie-web';
+import { useEffect, useRef } from 'react';
 export default function Lottie({ animation }) {
-  let animationContainer = useRef(null);
+  const animationContainer = useRef(null);
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: animationContainer.current,
-      renderer: "svg",
+      renderer: 'svg',
       loop: false,
       autoplay: true,
-      animationData: animation,
+      animationData: animation
     });
     return () => anim.destroy();
   }, []);
-  return (
-    <div ref={animationContainer} style={{ width: "100%", height: "60%" }} />
-  );
+  return <div ref={animationContainer} style={{ width: '100%', height: '60%' }} />;
 }
