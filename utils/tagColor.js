@@ -18,6 +18,8 @@ export const tagColor = {
   isr: { bgColor: '#b4c1b3E2', hover: '#4b6951E2' },
   accessibilty: { bgColor: '#8f4dbf', hover: '#8f4dbfE2' },
   bun: { bgColor: '#f8d847E2', hover: '#f0c32de2' },
-  hono: { bgColor: '#f0a500E2', hover: '#ea8f00E2' }
+  hono: { bgColor: '#f0a500E2', hover: '#ea8f00E2' },
+  ['react-query']: { bgColor: '#ff4154', hover: '#e60000' },
+  ['intersection-observer']: { bgColor: '#f0a500', hover: '#ea8f00' }
   // markdown: { bgColor: "#168aad", hover: "#1a759f" },
 };
