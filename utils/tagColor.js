@@ -20,6 +20,8 @@ export const tagColor = {
   bun: { bgColor: '#f8d847E2', hover: '#f0c32de2' },
   hono: { bgColor: '#f0a500E2', hover: '#ea8f00E2' },
   ['react-query']: { bgColor: '#ff4154', hover: '#e60000' },
-  ['intersection-observer']: { bgColor: '#f0a500', hover: '#ea8f00' }
-  // markdown: { bgColor: "#168aad", hover: "#1a759f" },
+  ['intersection-observer']: { bgColor: '#f0a500', hover: '#ea8f00' },
+  dynamodb: { bgColor: '#33d80ae2', hover: '#13e43de2' }, //make it green
+  aws: { bgColor: '#ff9900E2', hover: '#e68a00E2' },
+  docker: { bgColor: '#168aad', hover: '#1a759f' }
 };
