@@ -23,5 +23,8 @@ export const tagColor = {
   ['intersection-observer']: { bgColor: '#f0a500', hover: '#ea8f00' },
   dynamodb: { bgColor: '#33d80ae2', hover: '#13e43de2' }, //make it green
   aws: { bgColor: '#ff9900E2', hover: '#e68a00E2' },
-  docker: { bgColor: '#168aad', hover: '#1a759f' }
+  docker: { bgColor: '#168aad', hover: '#1a759f' },
+  postgresql: { bgColor: '#336791', hover: '#2c5771' },
+  redis: { bgColor: '#d82c2f', hover: '#b21f22' },
+  caching: { bgColor: '#f6c02d', hover: '#e6b72d' }
 };
