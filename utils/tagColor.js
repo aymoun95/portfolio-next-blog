@@ -27,5 +27,7 @@ export const tagColor = {
   postgresql: { bgColor: '#336791', hover: '#2c5771' },
   redis: { bgColor: '#d82c2f', hover: '#b21f22' },
   caching: { bgColor: '#f6c02d', hover: '#e6b72d' },
-  socketio: { bgColor: '#333333', hover: '#1a1a1a' }
+  socketio: { bgColor: '#333333', hover: '#1a1a1a' },
+  ['event-loop']: { bgColor: '#abcdef', hover: '#123456' },
+  browser: { bgColor: '#fedcba', hover: '#654321' }
 };
