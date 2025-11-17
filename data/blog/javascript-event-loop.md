@@ -99,7 +99,7 @@ Node.js also uses an event-driven architecture but depends on **libuv**, a C lib
 
 Node’s event loop runs through **six phases**, each responsible for specific kinds of callbacks.
 
-### Visual Diagram
+### Visual Diagram (Node)
 
 ![Node.js Event Loop Diagram](/images/blogs/event-loop/node.avif)
 
